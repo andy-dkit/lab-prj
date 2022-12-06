@@ -15,9 +15,11 @@ pipeline {
             }
         }
         stage("Start Python server") {
-            echo "Starting Server"
-            sh "cd server"
-            sh "python server.py"
+            steps {
+                echo "Starting Server"
+                sh "cd server"
+                sh "python server.py"
+            }
         }   
     }
 }
