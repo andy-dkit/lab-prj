@@ -41,4 +41,4 @@ def addContact(firstName="", lastName="", age=0, city="", email=""):
     f.write(newLine)
 
 if __name__ =='__main__':
-    app.run()
+    app.run(host="0.0.0.0")
