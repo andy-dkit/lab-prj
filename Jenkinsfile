@@ -10,8 +10,14 @@ pipeline {
         }
         stage("Copy Files to Nginx") {
             steps {
-                sh "cp -r * /usr/share/nginx/html"
+                sh "cp -r *.html /usr/share/nginx/html"
+                sh "cp -r images /usr/share/nginx/html/images"
             }
-        }       
+        }
+        stage("Start Python server") {
+            echo "Starting Server"
+            sh "cd server"
+            sh "python server.py"
+        }   
     }
 }
