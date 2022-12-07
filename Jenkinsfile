@@ -4,7 +4,8 @@ pipeline {
         stage("Checkout Files to nginx_tst1") {
             agent {label "nginx_tst1"}
             steps {
-                git 'https://github.com/andy-dkit/devops-ex1.git'
+                git 'https://github.com/andy-dkit/lab-prj.git'
+                sh "git checkout build-2"
                 echo "Stage 1- Checkout"
                 sh "pwd"
             }
@@ -19,7 +20,8 @@ pipeline {
         stage("Checkout Files to python_tst1") {
             agent {label "python_tst1"}
             steps {
-                git 'https://github.com/andy-dkit/devops-ex1.git'
+                git 'https://github.com/andy-dkit/lab-prj.git'
+                sh "git checkout build-2"
                 echo "Stage 1- Checkout"
                 sh "pwd"
             }
@@ -28,9 +30,14 @@ pipeline {
             agent {label "python_tst1"}
             steps {
                 echo "Starting Server"
-                sh "cd server"
-                sh "python server.py"
+                sh "pwd"
+                dir("server") {
+                    sh "pwd"
+                    sh "python ./server.py"
+                }
+                    
             }
-        }   
+        }
+   
     }
 }
