@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage("Checkout") {
             steps {
-                git 'https://github.com/andy-dkit/devops-ex1.git'
+                git 'https://github.com/andy-dkit/lab-prj.git'
                 echo "Stage 1- Checkout"
                 sh "pwd"
             }
